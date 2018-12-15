@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import moment from 'moment';
 import Calendar from './components/Calendar';
+import CategoryPicker from './components/CategoryPicker';
 
 class App extends Component {
   constructor(props) {
@@ -35,7 +36,36 @@ class App extends Component {
         <Calendar startDate={ this.state.date }
                   date={ this.state.date }
                   endDate={ this.state.date.clone().endOf('year') }
-                  />
+                  today={ moment() }
+                  onDayClick={(date, event) => {
+                    this.setState({
+                      showCategoryPicker: true,
+                      dateSelected: date,
+                      eventSelected: event
+                    })
+                  }}
+                  events={[
+                    {
+                      category: 'holiday',
+                      date: 1544569200
+                    },
+                    {
+                      category: 'birthday',
+                      date: 1544828400
+                    },
+                    {
+                      category: 'busy',
+                      date:  1544310000
+                    },
+                    {
+                      category: 'aniversary',
+                      date:  1538604000
+                    }
+                  ]} />
+        <CategoryPicker show={this.state.showCategoryPicker}
+                        date={this.state.dateSelected}
+                        event={this.state.eventSelected}
+                        events={['holiday', 'birthday', 'aniversary', 'busy']} />
       </div>
     );
   }

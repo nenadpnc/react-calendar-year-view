@@ -418,10 +418,6 @@ template {
 .day:hover {
   background-color: #5bc0de;
 }
-.day--outside {
-  cursor: default;
-  color: #eeeeee;
-}
 .day--outside:hover {
   background-color: transparent;
 }
@@ -429,13 +425,25 @@ template {
   background-color: #eeeeee;
 }
 .day--current {
-  background-color: #337ab7;
+  color: orangered;
 }
-.day--longEvent {
+.day.holiday {
   background-color: #5cb85c;
 }
-.day--warning {
+.day.birthday {
   background-color: #f0ad4e;
+}
+.day.busy {
+  background-color: #337ab7;
+}
+.day.aniversary {
+  background-color: darkturquoise;
+}
+.day--outside {
+  cursor: default;
+  color: #eeeeee;
+  background-color: transparent !important;
+  pointer-events: none;
 }
 
 .btn-nav {
@@ -448,4 +456,23 @@ template {
 
 .next-year {
   float: right;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0,0,0,.4)
+}
+
+.picker {
+  width: 150px;
+  height: 100px;
+  margin: 40% auto 0;
+  background: white;
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid #8d8b8b;
 }

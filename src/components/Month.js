@@ -25,7 +25,7 @@ const renderHeader = (props) => {
 };
 
 const Month = (props) => {
-  const { date } = props;
+  const { date, today, events } = props;
   const edges = monthEdges(date);
 
   return (
@@ -37,7 +37,9 @@ const Month = (props) => {
           <Week key={ `week-${i}` }
                 date={ wDate }
                 edges={ edges }
-                today={props.today} />
+                today={ today }
+                events={ events }
+                onDayClick={ props.onDayClick } />
         )
       }
     </div>

@@ -32,7 +32,11 @@ export default class Calendar extends Component {
         { this.renderHeader() }
         {
           this.getMonthRange().map((date, i) =>
-           <Month key={ `month-${i}` } date={ date } today={moment()} />
+           <Month key={ `month-${i}` }
+                  date={ date }
+                  today={ this.props.today }
+                  events={ this.props.events }
+                  onDayClick={ this.props.onDayClick } />
           )
         }
       </div>
