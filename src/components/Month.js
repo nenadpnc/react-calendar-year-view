@@ -36,7 +36,8 @@ const Month = (props) => {
         weeksOfMonth(props.date).map((wDate, i) =>
           <Week key={ `week-${i}` }
                 date={ wDate }
-                edges={ edges } />
+                edges={ edges }
+                today={props.today} />
         )
       }
     </div>

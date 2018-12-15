@@ -14,7 +14,7 @@ const Week = (props) => {
               outside = Boolean(props.edges.find((edge, j) => edge.isSame(date, 'month', 'week', 'year')));
             }
 
-            return <Day outside={ !!outside } key={ `day-${i}` } date={ date } />
+            return <Day outside={ !!outside } key={ `day-${i}` } date={ date } today={props.today} />
           })
         }
       </div>
