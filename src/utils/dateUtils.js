@@ -1,5 +1,3 @@
-'use strict';
-
 import moment from 'moment';
 
 /** Returns moment objects for first day of each week of the month.
