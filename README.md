@@ -1,4 +1,4 @@
-# Rock calendar year view
+# React calendar year view
 
 ### Installation guide
 
