@@ -8,7 +8,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: moment().startOf('year')
+      date: moment().startOf('year'),
+      events: JSON.parse(localStorage.getItem('events') || '[]')
     }
   }
 
@@ -22,6 +23,27 @@ class App extends Component {
     this.setState({
       date: this.state.date.clone().add(1, 'year')
     });
+  }
+
+  onPickerClose(event) {
+    this.setState({
+      showCategoryPicker: false,
+      dateSelected: null,
+      eventSelected: null
+    });
+
+    if (event) {
+      const eventsCopy = JSON.parse(JSON.stringify(this.state.events));
+      const index = this.state.events.findIndex((item) => item.date === event.date);
+      if (index > -1) {
+        eventsCopy[index] = event;
+      } else {
+        eventsCopy.push(event);
+      }
+
+      this.setState({ events: eventsCopy });
+      localStorage.setItem('events', JSON.stringify(eventsCopy));
+    }
   }
 
   render() {
@@ -44,28 +66,13 @@ class App extends Component {
                       eventSelected: event
                     })
                   }}
-                  events={[
-                    {
-                      category: 'holiday',
-                      date: 1544569200
-                    },
-                    {
-                      category: 'birthday',
-                      date: 1544828400
-                    },
-                    {
-                      category: 'busy',
-                      date:  1544310000
-                    },
-                    {
-                      category: 'aniversary',
-                      date:  1538604000
-                    }
-                  ]} />
-        <CategoryPicker show={this.state.showCategoryPicker}
-                        date={this.state.dateSelected}
+                  events={this.state.events} />
+        {this.state.showCategoryPicker ? (<CategoryPicker date={this.state.dateSelected}
                         event={this.state.eventSelected}
-                        events={['holiday', 'birthday', 'aniversary', 'busy']} />
+                        onClose={(event) => this.onPickerClose(event)}
+                        events={['holiday', 'birthday', 'aniversary', 'busy']} />)
+                        : ''
+        }
       </div>
     );
   }

@@ -348,6 +348,10 @@ template {
   display: none;
 }
 
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+}
+
 .cell {
   display: inline-block;
   width: 32px;
@@ -427,16 +431,16 @@ template {
 .day--current {
   color: orangered;
 }
-.day.holiday {
+.holiday {
   background-color: #5cb85c;
 }
-.day.birthday {
+.birthday {
   background-color: #f0ad4e;
 }
-.day.busy {
+.busy {
   background-color: #337ab7;
 }
-.day.aniversary {
+.aniversary {
   background-color: darkturquoise;
 }
 .day--outside {
@@ -468,11 +472,50 @@ template {
 }
 
 .picker {
-  width: 150px;
-  height: 100px;
-  margin: 40% auto 0;
+  width: 200px;
+  height: 220px;
+  position: absolute;
+  top: calc(50% - 110px);
+  left: calc(50% - 100px);
   background: white;
   padding: 10px;
   border-radius: 3px;
   border: 1px solid #8d8b8b;
+}
+
+.picker h3 {
+  margin: 0 0 10px;
+}
+
+.category-wrapper {
+  padding: 5px 0;
+}
+
+.category-wrapper label {
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.category-square {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.picker-buttons {
+  margin-top: 15px;
+}
+
+.picker-buttons button {
+  cursor: pointer;
+  border: none;
+  padding: 5px 15px;
+  color: white;
+  background-color: orangered;
+}
+
+.btn-save {
+  float: right;
+  background-color: #337ab7 !important;
 }
