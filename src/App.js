@@ -55,23 +55,23 @@ class App extends Component {
         <button className="btn-nav next-year" onClick={() => this.handleNextYear()}>
           Next Year
         </button>
-        <Calendar startDate={ this.state.date }
-                  date={ this.state.date }
-                  endDate={ this.state.date.clone().endOf('year') }
-                  today={ moment() }
-                  onDayClick={(date, event) => {
-                    this.setState({
-                      showCategoryPicker: true,
-                      dateSelected: date,
-                      eventSelected: event
-                    })
-                  }}
-                  events={this.state.events} />
+        <Calendar startDate={this.state.date}
+          date={this.state.date}
+          endDate={this.state.date.clone().endOf('year')}
+          today={moment()}
+          onDayClick={(date, event) => {
+            this.setState({
+              showCategoryPicker: true,
+              dateSelected: date,
+              eventSelected: event
+            })
+          }}
+          events={this.state.events} />
         {this.state.showCategoryPicker ? (<CategoryPicker date={this.state.dateSelected}
-                        event={this.state.eventSelected}
-                        onClose={(event) => this.onPickerClose(event)}
-                        events={['holiday', 'birthday', 'aniversary', 'busy']} />)
-                        : ''
+          event={this.state.eventSelected}
+          onClose={(event) => this.onPickerClose(event)}
+          events={['holiday', 'birthday', 'aniversary', 'busy']} />)
+          : ''
         }
       </div>
     );

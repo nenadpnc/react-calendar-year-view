@@ -3,21 +3,21 @@ import moment from 'moment';
 import Month from './Month';
 
 export default class Calendar extends Component {
-  moment () {
+  moment() {
     const localMoment = moment.apply(null, arguments);
     localMoment.locale(this.props.locale);
     return localMoment;
   }
 
-  renderHeader () {
+  renderHeader() {
     return (
       <header key="header" className="calendar-header">
-        { this.moment(this.props.date).format('YYYY') }
+        {this.moment(this.props.date).format('YYYY')}
       </header>
     );
   }
 
-  getMonthRange () {
+  getMonthRange() {
     const focus = this.moment(this.props.date || this.props.startDate).startOf('month');
     const start = this.moment(this.props.startDate);
     const end = this.moment(this.props.endDate);
@@ -26,17 +26,17 @@ export default class Calendar extends Component {
     return Array(size).fill(0).map((n, i) => focus.clone().add(n + i, 'months'));
   }
 
-  render () {
+  render() {
     return (
       <div>
-        { this.renderHeader() }
+        {this.renderHeader()}
         {
           this.getMonthRange().map((date, i) =>
-           <Month key={ `month-${i}` }
-                  date={ date }
-                  today={ this.props.today }
-                  events={ this.props.events }
-                  onDayClick={ this.props.onDayClick } />
+            <Month key={`month-${i}`}
+              date={date}
+              today={this.props.today}
+              events={this.props.events}
+              onDayClick={this.props.onDayClick} />
           )
         }
       </div>

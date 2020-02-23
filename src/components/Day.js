@@ -7,8 +7,8 @@ const Day = (props) => {
 
   return (
     <div onClick={() => onDayClick(date, event)}
-      className={ `day${outside ? ' day--outside' : ''}${date.isSame(today, 'd') ? ' day--current' : ''} ${event ? event.category : ''}` }>
-      { date.format('D') }
+      className={`day${outside ? ' day--outside' : ''}${date.isSame(today, 'd') ? ' day--current' : ''} ${event ? event.category : ''}`}>
+      {date.format('D')}
     </div>
   );
 };
